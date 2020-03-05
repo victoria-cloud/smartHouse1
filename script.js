@@ -94,7 +94,11 @@ class View {
             //view
             this._airCondLi = document.createElement("li");
             this._airCondLi.innerText = data;
+
             this._airCondList.appendChild(this._airCondLi);
+
+            //блок с кнопками on/off
+            const onOffBlock = document.createElement('div');
 
             const onInput = document.createElement("input");
             onInput.type = "radio";
@@ -109,43 +113,44 @@ class View {
 
             const on = document.createElement("label");
             on.innerText = " on";
-            this._airCondLi.appendChild(on);
+            onOffBlock.appendChild(on);
             on.appendChild(onInput);
+
 
             const off = document.createElement("label");
             off.innerText = " off";
-            this._airCondLi.appendChild(off);
+            onOffBlock.appendChild(off);
             off.appendChild(offInput);
 
-            const deleter = document.createElement("button");
-            deleter.type = "button";
-            deleter.innerText = "DELETE";
-            deleter.className = "deleter";
-            this._airCondLi.appendChild(deleter);
+            this._airCondLi.appendChild(onOffBlock);
 
-            var linebreak = document.createElement("br");
-            this._airCondLi.appendChild(linebreak);
+            //блок выбора температуры
 
-            const Temp = document.createTextNode("Темперутура: ");
-            this._airCondLi.appendChild(Temp);
+            const Temp = document.createElement('div');
+            Temp.innerText = "Temperature:";
+            Temp.className = "temperature";
 
             this._temp = document.createElement("span");
             this._temp.innerText = this._smartHouse.getDeviceByName(data).temperature;
             this._temp.id = `${data}`;
-            this._airCondLi.appendChild(this._temp);
+            Temp.append(this._temp);
 
             const increaseTemp = document.createElement("button");
             increaseTemp.type = "button";
             increaseTemp.innerText = "+";
-            this._airCondLi.appendChild(increaseTemp);
+            Temp.append(increaseTemp);
 
             const decreaseTemp = document.createElement("button");
             decreaseTemp.type = "button";
             decreaseTemp.innerText = "-";
-            this._airCondLi.appendChild(decreaseTemp);
+            Temp.append(decreaseTemp);
 
-            let linebreak1 = document.createElement("br");
-            this._airCondLi.appendChild(linebreak1);
+            this._airCondLi.appendChild(Temp);
+
+
+            //блок выбора режима работы кондиционера
+
+            const Mode = document.createElement('div');
 
             const coolM = document.createElement("input");
             coolM.className = data;
@@ -180,28 +185,30 @@ class View {
 
             const cool = document.createElement("label");
             cool.innerText = "cool";
-            this._airCondLi.appendChild(cool);
+            Mode.appendChild(cool);
             cool.appendChild(coolM);
 
             const heat = document.createElement("label");
             heat.innerText = "heat";
-            this._airCondLi.appendChild(heat);
+            Mode.appendChild(heat);
             heat.appendChild(heatM);
 
             const dry = document.createElement("label");
             dry.innerText = "dry";
-            this._airCondLi.appendChild(dry);
+            Mode.appendChild(dry);
             dry.appendChild(dryM);
 
             const fan = document.createElement("label");
             fan.innerText = "fan";
-            this._airCondLi.appendChild(fan);
+            Mode.appendChild(fan);
             fan.appendChild(fanM);
 
             const sleep = document.createElement("label");
             sleep.innerText = "sleep";
-            this._airCondLi.appendChild(sleep);
+            Mode.appendChild(sleep);
             sleep.appendChild(sleepM);
+
+            this._airCondLi.appendChild(Mode);
 
             coolM.addEventListener("click", this._modeChoose(data));
             heatM.addEventListener("click", this._modeChoose(data));
@@ -210,7 +217,11 @@ class View {
             sleepM.addEventListener("click", this._modeChoose(data));
 
 
-
+            const deleter = document.createElement("button");
+            deleter.type = "button";
+            deleter.innerText = "DELETE";
+            deleter.className = "deleter";
+            this._airCondLi.appendChild(deleter);
 
 
 

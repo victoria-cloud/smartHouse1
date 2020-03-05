@@ -36,11 +36,13 @@ ol {
     margin-left: 20px;
     list-style: none;
     counter-reset: my-counter;
+    font-family: cursive, fantasy, sans-serif;
 
 }
 
 li {
     counter-increment: my-counter;
+    position: relative;
 }
 
 ol li::before {
@@ -54,5 +56,16 @@ ol li::before {
     text-align: center;
     margin: 5px 5px 0 0;
 
+}
+
+.temperature button {
+    border: none;
+    color: #4E5A5E;
+    background-color: #B0C7CD;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
 
 }
