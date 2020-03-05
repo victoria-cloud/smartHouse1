@@ -39,10 +39,12 @@ class View {
         this._airCondInput = document.createElement("input");
         this._airCondInput.type = "text";
         this._airCondInput.placeholder = "Device name:";
+        this._airCondInput.className = "inputForName";
 
         const addAirCondButton = document.createElement("button");
         addAirCondButton.type = "button";
         addAirCondButton.innerText = "+";
+        addAirCondButton.className = "addButton";
         addAirCondButton.addEventListener(
             "click",
             this._addAirCondButtonHandler()
@@ -65,10 +67,12 @@ class View {
         this._alarmInput = document.createElement("input");
         this._alarmInput.type = "text";
         this._alarmInput.placeholder = "Device name:";
+        this._alarmInput.className = "inputForName";
 
         const addAlarmButton = document.createElement("button");
         addAlarmButton.type = "button";
         addAlarmButton.innerText = "+";
+        addAlarmButton.className = "addButton";
         addAlarmButton.addEventListener("click", this._addAlarmHandler());
 
         this._alarmList = document.createElement("ol");

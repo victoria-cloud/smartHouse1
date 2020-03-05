@@ -4,7 +4,55 @@
 }
 
 h3 {
+    font-family: cursive, fantasy, sans-serif;
+    color: #3FA1BF;
+    margin: 10px 20px;
+}
 
-    font-stretch: condensed;
-    font-size: 200%;
+.inputForName,
+.addButton {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    font-family: cursive;
+    display: inline-block;
+    text-decoration: none;
+    color: #4E5A5E;
+    background-color: #C6DAE1;
+    padding: 2px;
+}
+
+.inputForName {
+    margin-left: 20px;
+}
+
+.addButton {
+    width: 20px;
+    background-color: #B0C7CD;
+}
+
+ol {
+    margin-left: 20px;
+    list-style: none;
+    counter-reset: my-counter;
+
+}
+
+li {
+    counter-increment: my-counter;
+}
+
+ol li::before {
+    content: counter(my-counter);
+    color: #4E5A5E;
+    background-color: #C6DAE1;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    margin: 5px 5px 0 0;
+
+
 }
