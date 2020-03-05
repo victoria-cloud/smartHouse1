@@ -1,0 +1,64 @@
+КЛАСС Smart House
+
+Состояние:
+
+_name:string;
+_devices:[Device];
+
+Поведение:
+
+constructor(name) 2015!
+getName():string;
+getDevices():[Device];
+getDEviceByName(String): String;
+_devNames():array;2009!
+addDevice(String):void;
+deleteDeviceByName(String):void;
+
+
+Класс Кондиционер
+
+Состояние:
+
+_name:string;
+_state:boolean;
+_temperature:number;
+_mode:array;
+_currentMode:number;
+
+Поведение:
+
+getName():string;
+getState():boolean;
+on():void;
+off():void;
+getTemperature():number;
+setTemperature(num):void;
+increaseTemperature():void;
+decreaseTemperature():void;
+nextMode():void;
+getMode():string;
+
+
+Класс Сигнализация
+
+
+Состояние:
+
+_name:string;
+_state:boolean;
+_alarm:number;
+_password:string;
+_locked:true;
+
+Поведение:
+
+getName():string;
+getState():boolean;
+setAlarmVolume(num):void;
+getAlarmVolume():number;
+on():void;
+off():void;
+setPassword():void;
+getLocked():boolean;
+unlocked(pass):void.
