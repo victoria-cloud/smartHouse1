@@ -1,10 +1,138 @@
-"use strict"
+
+class Device {
+    constructor(name) {
+        this._name = name;
+        this._state = false;
+    }
+
+    get name() {
+        return this._name;
+    }
+    get state() {
+        return this._state;
+    }
+    on() {
+        this._state = true;
+    }
+    off() {
+        this._state = false;
+    }
+}
+
+class AirConditioner extends Device {
+    constructor(name) {
+        super(name);
+        this._temperature = 20;
+        this._mode = ['cool', 'heat', 'dry', 'fan', 'sleep'];
+        this._currentMode = 0;
+    }
+
+    get temperature() {
+        return this._temperature;
+    }
+    set temperature(num) {
+        if (num === undefined || typeof(num) !== "number" ||
+            num < 10 || num > 35) {
+            throw new Error('Invalid parameters');
+        } else
+            this._temperature = num;
+    }
+    increaseTemperature() {
+        if (this._temperature < 35) {
+            this._temperature++;
+        } else {
+            throw new Error("It is too hot!Stop!")
+        };
+    }
+    decreaseTemperature() {
+        if (this._temperature > 10) {
+            this._temperature--;
+        } else {
+            throw new Error("It is cold enough!!!!");
+        }
+    }
+    nextMode() {
+
+        if (this._currentMode < this._mode.length - 1) {
+            this._currentMode++;
+        } else {
+            this._currentMode = 0;
+        }
+    }
+    get mode() {
+        return this._mode[this._currentMode];
+    }
+}
+
+class AlarmSystem extends Device {
+    constructor(name) {
+        super(name);
+        this._alarm = 10;
+        this._password = null;
+        this._locked = true;
+    }
+    set alarmVolume(num) {
+        if (num === undefined || typeof(num) !== "number" ||
+            num < 10 || num > 100) {
+            throw new Error('Invalid parameters');
+        } else
+            this._alarm = num;
+    }
+    get alarmVolume() {
+        return this._alarm;
+    }
+    get locked() {
+        return this._locked;
+    }
+    unlocked(pass) {
+        if (pass === this._password) {
+            this._locked = false;
+        } else {
+            this._locked = true;
+        }
+    }
+    set password(password) {
+        if (password.match(/[a-z]/) == null ||
+            password.match(/[A-Z]/) == null ||
+            password.match(/[0-9]/ == null)) {
+            throw new Error("Пароль должен содержать по одному символу из каждого набора a - z, A - Z, 0 - 9 ");
+        } else {
+            this._password = password;
+        }
+    }
+}
 
 
-import Device from './device.js';
-import AirConditioner from "./airConditioner.js";
-import AlarmSystem from "./alarmSystem.js";
-import SmartHouse from "./smartHouse.js";
+
+class SmartHouse {
+    constructor(name) {
+        this._name = name;
+        this._devices = new Map();
+    }
+    get name() {
+        return this._name;
+    }
+    get devices() {
+        return this._devices;
+    }
+    getDeviceByName(str) {
+        return this._devices.get(str);
+    }
+    addDevice(obj) {
+
+        if (this._devices.has(obj.name)) {
+            throw new Error("Устройство с таким именем уже существует")
+        } else {
+            this._devices.set(obj.name, obj);
+        }
+
+        //this._devices.set(obj.name, obj);
+    }
+    deleteDeviceByName(str) {
+        this._devices.delete(str);
+    }
+}
+
 
 
 class View {
