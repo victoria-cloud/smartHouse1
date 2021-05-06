@@ -62,3 +62,6 @@ off():void;
 setPassword():void;
 getLocked():boolean;
 unlocked(pass):void.
+
+
+-------------------------------
